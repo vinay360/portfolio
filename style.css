@@ -1,0 +1,76 @@
+body{
+  text-align: center;
+  margin: 0;
+}
+h1{
+  font-family: 'Sacramento', cursive;
+  color: #16003B;
+  margin: 0;
+  font-size: 75px;
+}
+.bird{
+  position: absolute;
+  height: 50px;
+  right:40%;
+  top: 55%;
+}
+.student{
+  font-family: 'Inconsolata', monospace;
+  font-size: 40px;
+  margin-top: 2px;
+  margin-bottom: 75px;
+  color: #16003B;
+}
+.top-container {
+  position: relative;
+  padding-top: 150px;
+  background-color: #3BACB6;
+}
+
+.top-cloud{
+  position: absolute;
+  top: 200px;
+  right: 300px;
+}
+.bottom-cloud{
+  position: absolute;
+  bottom: 300px;
+  left: 300px;
+}
+.mountain{
+  display: block;
+  position: relative;
+  left: 30%;
+  margin: 0;
+}
+.avatar{
+  position: absolute;
+  height: 200px;
+  left: 15%;
+  top: 15%;
+}
+.middle-container{
+  position: relative;
+  padding: 75px;
+  background-color: #383838;
+  height: 1000px;
+}
+.ed{
+  margin-top: 0;
+  font-family: 'Inconsolata', monospace;
+  color: #3BACB6;
+  font-size: 75px;
+  left: 2%;
+  top: 5%;
+}
+.intro{
+  font-size: 25px;
+  color: #F2F2F2;
+}
+.dots{
+  margin-top: 70px;
+  border-style: dotted none none;
+  width: 10%;
+  color: #3BACB6;
+  border-width: 10px;
+}

@@ -38,9 +38,9 @@
   .cursor {
     display: inline-block;
     width: 8px;
-    height: 14px;
+    height: 28px;
     background: var(--fg);
-    margin-left: 2px;
+    margin-left: 10px;
     vertical-align: middle;
     animation: blink 1s step-end infinite;
   }
@@ -282,6 +282,30 @@
     nav .inner { flex-direction: column; gap: 16px; }
     .nav-links { gap: 16px; }
   }
+  /* theme toggle button */
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--fg);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .theme-toggle:hover { background: var(--hover-bg); }
+
+  /* dark theme variables */
+  :root[data-theme="dark"] {
+    --bg: #0b0b0c;
+    --fg: #e9e7e4;
+    --muted: #bdb8b3;
+    --accent: #9ad3ff;
+    --line: rgba(233,231,228,0.06);
+    --hover-bg: rgba(233,231,228,0.03);
+  }
 </style>
 </head>
 <body>
@@ -290,13 +314,16 @@
 
   <nav>
     <div class="inner">
-      <a href="#" class="nav-logo">~/ dev</a>
-      <ul class="nav-links">
-        <li><a href="#work">work</a></li>
-        <li><a href="#experience">experience</a></li>
-        <li><a href="#skills">skills</a></li>
-        <li><a href="#contact">contact</a></li>
-      </ul>
+      <a href="#" class="nav-logo">~/</a>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <ul class="nav-links">
+          <li><a href="#work">work</a></li>
+          <li><a href="#experience">experience</a></li>
+          <li><a href="#skills">skills</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      </div>
     </div>
   </nav>
 
@@ -309,7 +336,7 @@
 
     <h1 class="hero-name">
       hey, i'm<br>
-      <em>your name here</em><span class="cursor"></span>
+      <em>vinay</em><span class="cursor"></span>
     </h1>
 
     <p class="hero-bio">
@@ -450,24 +477,24 @@
     <div class="section-label">// find me</div>
     <div class="contact-links">
 
-      <a class="contact-link" href="mailto:you@email.com">
+      <a class="contact-link" href="mailto:vvagrwl@gmail.com">
         <span class="contact-link-platform">email</span>
-        <span>you@email.com &nbsp;<span class="contact-arrow">↗</span></span>
+        <span>vvagrwl@gmail.com &nbsp;<span class="contact-arrow">↗</span></span>
       </a>
 
-      <a class="contact-link" href="https://github.com" target="_blank">
+      <a class="contact-link" href="https://github.com/vinay360" target="_blank">
         <span class="contact-link-platform">github</span>
-        <span>@yourhandle &nbsp;<span class="contact-arrow">↗</span></span>
+        <span>@vinay360 &nbsp;<span class="contact-arrow">↗</span></span>
       </a>
 
-      <a class="contact-link" href="https://linkedin.com" target="_blank">
+      <a class="contact-link" href="https://linkedin.com/in/vinagrwl" target="_blank">
         <span class="contact-link-platform">linkedin</span>
-        <span>in/yourname &nbsp;<span class="contact-arrow">↗</span></span>
+        <span>in/vinagrwl &nbsp;<span class="contact-arrow">↗</span></span>
       </a>
 
-      <a class="contact-link" href="https://twitter.com" target="_blank">
+      <a class="contact-link" href="https://twitter.com/vinagrwl" target="_blank">
         <span class="contact-link-platform">twitter / x</span>
-        <span>@yourhandle &nbsp;<span class="contact-arrow">↗</span></span>
+        <span>@vinagrwl &nbsp;<span class="contact-arrow">↗</span></span>
       </a>
 
     </div>
@@ -475,7 +502,7 @@
 
   <footer>
     <span>built from scratch · no frameworks harmed</span>
-    <span>2025</span>
+    <span>2026</span>
   </footer>
 
 </div>
@@ -491,6 +518,36 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(r => obs.observe(r));
+
+  // theme (dark mode) toggle + persistence
+  (function(){
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    function setTheme(theme){
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme','dark');
+        toggle.setAttribute('aria-pressed','true');
+        toggle.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        toggle.setAttribute('aria-pressed','false');
+        toggle.textContent = '🌙';
+      }
+    }
+
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = saved || (prefersDark ? 'dark' : 'light');
+    setTheme(initial);
+
+    toggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      localStorage.setItem('theme', next);
+    });
+  })();
 </script>
 
 </body>

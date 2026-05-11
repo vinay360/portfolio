@@ -1,34 +1,497 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 
-    <title>Vinay Agarwal</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Sacramento&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico">
-  </head>
-  <body>
-    <div class="top-container">
-      <img class="avatar" src="avatar.png" alt="avatar">
-      <img class="top-cloud" src="cloud.png" alt="cloud">
-      <img class="bird" src="bird.png" alt="bird">
-      <h1>I'm Vinay</h1>
-      <p class="student">
-        <strong>a student.</strong>
-      </p>
-      <img class="bottom-cloud" src="cloud.png" alt="cloud">
-      <img class="mountain" src="mountain.png" alt="mountain">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f4f0;
+    --fg: #1a1916;
+    --muted: #8a8880;
+    --accent: #1a1916;
+    --line: rgba(26,25,22,0.12);
+    --hover-bg: rgba(26,25,22,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--fg); color: var(--bg); }
+
+  /* cursor */
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--fg);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* layout */
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* nav */
+  nav {
+    padding: 32px 0 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 80px;
+  }
+  nav .inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+  .nav-logo {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--fg); }
+
+  /* sections */
+  section { margin-bottom: 80px; }
+
+  /* hero */
+  .hero { margin-bottom: 96px; }
+  .hero-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4a9e6b;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  .hero-name {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    color: var(--fg);
+  }
+  .hero-name em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .hero-bio {
+    font-family: 'Geist Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+  .hero-bio strong {
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  /* section label */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* work/projects */
+  .project-list { display: flex; flex-direction: column; gap: 0; }
+
+  .project-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    cursor: pointer;
+    gap: 16px;
+  }
+  .project-item:first-child { border-top: 1px solid var(--line); }
+  .project-item:hover { background: var(--hover-bg); margin: 0 -8px; padding: 16px 8px; }
+
+  .project-name {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 3px;
+    color: var(--fg);
+  }
+  .project-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .project-tag {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  /* experience */
+  .exp-list { display: flex; flex-direction: column; gap: 32px; }
+  .exp-item {}
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .exp-role { font-size: 13px; font-weight: 500; }
+  .exp-period { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+  .exp-company { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .exp-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+  /* skills */
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  .skill-group {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-group:nth-child(odd) { padding-right: 32px; border-right: 1px solid var(--line); }
+  .skill-group:nth-child(even) { padding-left: 32px; }
+  .skill-group:last-child, .skill-group:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .skill-group-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .skill-tag {
+    font-size: 11px;
+    color: var(--fg);
+    background: rgba(26,25,22,0.06);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* contact */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 12px;
+    transition: color 0.15s;
+  }
+  .contact-link:first-child { border-top: 1px solid var(--line); }
+  .contact-link:hover { color: var(--fg); }
+  .contact-link-platform { color: var(--fg); font-weight: 500; font-size: 13px; }
+  .contact-arrow { font-size: 14px; opacity: 0.4; }
+
+  /* footer */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* page fade in */
+  body { animation: fadein 0.4s ease; }
+  @keyframes fadein { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+  /* scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 480px) {
+    .skill-grid { grid-template-columns: 1fr; }
+    .skill-group:nth-child(odd) { padding-right: 0; border-right: none; }
+    .skill-group:nth-child(even) { padding-left: 0; }
+    .skill-group { border-bottom: 1px solid var(--line); }
+    nav .inner { flex-direction: column; gap: 16px; }
+    .nav-links { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <nav>
+    <div class="inner">
+      <a href="#" class="nav-logo">~/ dev</a>
+      <ul class="nav-links">
+        <li><a href="#work">work</a></li>
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
     </div>
-    <div class="middle-container">
-      <h2 class="ed">Hello!</h2>
-      <p class="intro">I am a Computer Science Enthusiast.<br>
-         This website is my first web development<br>
-         project. Hope you like it!</p>
-      <hr class="dots">
+  </nav>
+
+  <!-- hero -->
+  <div class="hero">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      available for opportunities
     </div>
-  </body>
+
+    <h1 class="hero-name">
+      hey, i'm<br>
+      <em>your name here</em><span class="cursor"></span>
+    </h1>
+
+    <p class="hero-bio">
+      i build things — <strong>web apps, terminal tools, cli toys,</strong> and whatever 
+      else seems interesting. i like the full stack but i'm most at home where 
+      <strong>backend meets something clever.</strong><br><br>
+      previously interned on <strong>backend infrastructure</strong> and 
+      <strong>ai/ml systems.</strong> always shipping something.
+    </p>
+  </div>
+
+  <!-- work -->
+  <section id="work" class="reveal">
+    <div class="section-label">// selected work</div>
+    <div class="project-list">
+
+      <a class="project-item" href="#">
+        <div>
+          <div class="project-name">project name</div>
+          <div class="project-desc">a web app that does something cool — built with whatever made sense. describe what problem it solves in one line.</div>
+        </div>
+        <div class="project-tag">web · 2024</div>
+      </a>
+
+      <a class="project-item" href="#">
+        <div>
+          <div class="project-name">terminal thing</div>
+          <div class="project-desc">a cli tool for something useful. runs in your terminal, does it fast, no nonsense.</div>
+        </div>
+        <div class="project-tag">cli · 2024</div>
+      </a>
+
+      <a class="project-item" href="#">
+        <div>
+          <div class="project-name">ai experiment</div>
+          <div class="project-desc">something with language models — an api wrapper, a fine-tune, or just a weird idea that turned into a repo.</div>
+        </div>
+        <div class="project-tag">ai · 2024</div>
+      </a>
+
+      <a class="project-item" href="#">
+        <div>
+          <div class="project-name">fun problem</div>
+          <div class="project-desc">solved a coding challenge or puzzle in an overcomplicated way. worth reading if you like weird optimizations.</div>
+        </div>
+        <div class="project-tag">misc · 2023</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- experience -->
+  <section id="experience" class="reveal">
+    <div class="section-label">// experience</div>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">software engineering intern</span>
+          <span class="exp-period">summer 2024</span>
+        </div>
+        <div class="exp-company">company name — ai/ml team</div>
+        <div class="exp-desc">
+          worked on [something specific]. built or improved [a system]. 
+          learned a lot about how ml stuff actually runs in production — 
+          which is different from how it runs in notebooks.
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">backend engineering intern</span>
+          <span class="exp-period">summer 2023</span>
+        </div>
+        <div class="exp-company">company name — infrastructure team</div>
+        <div class="exp-desc">
+          built [apis / services / pipelines]. worked with [tech stack]. 
+          shipped something that actually went to production and didn't break anything important.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- skills -->
+  <section id="skills" class="reveal">
+    <div class="section-label">// toolkit</div>
+    <div class="skill-grid">
+
+      <div class="skill-group">
+        <div class="skill-group-label">languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">python</span>
+          <span class="skill-tag">go</span>
+          <span class="skill-tag">typescript</span>
+          <span class="skill-tag">rust</span>
+          <span class="skill-tag">bash</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">fastapi</span>
+          <span class="skill-tag">postgres</span>
+          <span class="skill-tag">redis</span>
+          <span class="skill-tag">docker</span>
+          <span class="skill-tag">grpc</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">ai / ml</div>
+        <div class="skill-tags">
+          <span class="skill-tag">pytorch</span>
+          <span class="skill-tag">langchain</span>
+          <span class="skill-tag">rag</span>
+          <span class="skill-tag">fine-tuning</span>
+          <span class="skill-tag">embeddings</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-label">web</div>
+        <div class="skill-tags">
+          <span class="skill-tag">react</span>
+          <span class="skill-tag">next.js</span>
+          <span class="skill-tag">tailwind</span>
+          <span class="skill-tag">htmx</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contact" class="reveal">
+    <div class="section-label">// find me</div>
+    <div class="contact-links">
+
+      <a class="contact-link" href="mailto:you@email.com">
+        <span class="contact-link-platform">email</span>
+        <span>you@email.com &nbsp;<span class="contact-arrow">↗</span></span>
+      </a>
+
+      <a class="contact-link" href="https://github.com" target="_blank">
+        <span class="contact-link-platform">github</span>
+        <span>@yourhandle &nbsp;<span class="contact-arrow">↗</span></span>
+      </a>
+
+      <a class="contact-link" href="https://linkedin.com" target="_blank">
+        <span class="contact-link-platform">linkedin</span>
+        <span>in/yourname &nbsp;<span class="contact-arrow">↗</span></span>
+      </a>
+
+      <a class="contact-link" href="https://twitter.com" target="_blank">
+        <span class="contact-link-platform">twitter / x</span>
+        <span>@yourhandle &nbsp;<span class="contact-arrow">↗</span></span>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>built from scratch · no frameworks harmed</span>
+    <span>2025</span>
+  </footer>
+
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+
+</body>
 </html>

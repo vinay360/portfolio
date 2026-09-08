@@ -1,0 +1,309 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-hanken-grotesk);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --radius: 0.45rem;
+  --blog-font-size: 16px;
+
+  /* view transition timings */
+  --duration-exit: 0.15s;
+  --duration-enter: 0.21s;
+  --duration-move: 0.4s;
+
+  --background: #f9f9f9;
+  --foreground: #100f0f;
+  --card: #f9f9f9;
+  --card-foreground: #100f0f;
+  --popover: #f9f9f9;
+  --popover-foreground: #100f0f;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #df2225;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a1a1a1;
+  --chart-1: #90c5ff;
+  --chart-2: #3080ff;
+  --chart-3: #155dfc;
+  --chart-4: #1447e6;
+  --chart-5: #193cb8;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #100f0f;
+  --sidebar-primary: #171717;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #a1a1a1;
+}
+
+.dark {
+  --background: #100f0f;
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #171717;
+  --popover-foreground: #fafafa;
+  --primary: #d4d4d4;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a1a1a1;
+  --accent: #404040;
+  --accent-foreground: #fafafa;
+  --destructive: #ff6568;
+  --border: #ffffff1a;
+  --input: #ffffff26;
+  --ring: #737373;
+  --chart-1: #90c5ff;
+  --chart-2: #3080ff;
+  --chart-3: #155dfc;
+  --chart-4: #1447e6;
+  --chart-5: #193cb8;
+  --sidebar: #171717;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #1447e6;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #ffffff1a;
+  --sidebar-ring: #737373;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Fixed grey for "secondary" text in both themes
+   (overrides the generated utility; unlayered so it wins the cascade). */
+.text-secondary,
+.text-secondary:is(.dark *) {
+  color: #909092;
+}
+
+/* ---------- keyframes ---------- */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in-slide {
+  0% {
+    opacity: 0;
+    transform: translate(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes fade {
+  0% {
+    filter: blur(3px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+/* ---------- page / section entrance animations ---------- */
+.animate-in-up {
+  animation: 0.35s ease-out both fade-in-up;
+}
+
+.animate-in-up-on-view {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.animate-in-up-on-view.in-view {
+  animation: 0.35s ease-out both fade-in-up;
+}
+.animate-in-up-on-view .blog-list-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.animate-in-up-on-view.in-view .blog-list-item {
+  animation: 0.35s ease-out both fade-in-up;
+}
+
+/* ---------- blog list hover focus effect ---------- */
+.blog-list-item {
+  z-index: 0;
+  transition:
+    filter 0.3s,
+    opacity 0.3s;
+  animation: 0.35s ease-out both fade-in-up;
+  position: relative;
+}
+.blog-list:not(.blog-list--static) .blog-list-item:has(article:hover) {
+  z-index: 10;
+}
+.blog-list:not(.blog-list--static):has(article:hover)
+  .blog-list-item:not(:has(article:hover)) {
+  filter: blur(2px);
+  opacity: 0.4;
+}
+
+/* ---------- misc component styles ---------- */
+.quote-card-shadow {
+  box-shadow:
+    inset 0 1px 2px #00000014,
+    inset 0 1px 4px #0000000a;
+}
+.dark .quote-card-shadow {
+  box-shadow:
+    inset 0 1px 2px #ffffff0f,
+    inset 0 1px 4px #ffffff08;
+}
+
+.toc-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #fff3 transparent;
+}
+.toc-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.toc-scrollbar::-webkit-scrollbar-track {
+  background: 0 0;
+}
+.toc-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #fff3;
+  border-radius: 3px;
+}
+.toc-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffff4d;
+}
+
+.blog-comments .utterances {
+  max-width: none;
+  margin: 0;
+}
+.blog-comments .utterances-frame {
+  border: 0;
+  width: 100%;
+}
+
+/* ---------- prose (blog body) ---------- */
+.prose pre {
+  position: relative;
+}
+.prose .group:hover .opacity-0 {
+  opacity: 1;
+}
+.prose,
+.prose p,
+.prose li,
+.prose blockquote {
+  font-size: var(--blog-font-size);
+}
+.prose h1 {
+  font-size: calc(var(--blog-font-size) * 2.25);
+}
+.prose h2 {
+  font-size: calc(var(--blog-font-size) * 1.875);
+}
+.prose h3 {
+  font-size: calc(var(--blog-font-size) * 1.5);
+}
+.prose h4 {
+  font-size: calc(var(--blog-font-size) * 1.25);
+}
+
+/* ---------- view transitions ---------- */
+::view-transition-old(.fade-out) {
+  animation: var(--duration-exit) ease-in fade reverse;
+}
+::view-transition-new(.fade-in) {
+  animation: var(--duration-enter) ease-out var(--duration-exit) both fade;
+}

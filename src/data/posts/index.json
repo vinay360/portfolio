@@ -1,0 +1,236 @@
+[
+ {
+  "slug": "fafo-learning",
+  "title": "How to Fuck Around and Find Out",
+  "description": "A guide to the unconventional way of learning.",
+  "publish_date": "2026-08-22",
+  "image": "/blog/og/fafo-learning.png",
+  "categories": [
+   "Personal",
+   "Engineering"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "cursor-code-indexing",
+  "title": "A deep dive into Cursor’s Code Indexing",
+  "description": "How cursor's code indexing actually works?",
+  "publish_date": "2026-07-28",
+  "image": "/blog/og/cursor.png",
+  "categories": [
+   "AI",
+   "Engineering"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "ai-parallesis",
+  "title": "The AI Paralysis",
+  "description": "Why more AI tools aren't making people more capable.",
+  "publish_date": "2026-06-18",
+  "image": "/blog/og/ai-parallesis.png",
+  "categories": [
+   "AI",
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "dear-indian-students",
+  "title": "Dear Indian Students",
+  "description": "Why most Indian students stay average despite wanting extraordinary results.",
+  "publish_date": "2026-06-06",
+  "image": "/blog/og/dear-indian-students.png",
+  "categories": [
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "faq",
+  "title": "The FAQ",
+  "description": "Covering the most frequently asked question.",
+  "publish_date": "2026-05-28",
+  "image": "/blog/og/faq.png",
+  "categories": [
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "the-internet-romanticized-exhaustion",
+  "title": "The Internet Romanticized Exhaustion",
+  "description": "How hustle culture slowly destroys ambition, health, peace, and your identity.",
+  "publish_date": "2026-05-28",
+  "image": "/blog/og/the-internet-romanticized-exhaustion.png",
+  "categories": [
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "we-stopped-optimizing-for-skills",
+  "title": "We Stopped Optimizing for Skills.",
+  "description": "We stopped optimizing for skills and started optimizing for looking skilled.",
+  "publish_date": "2026-05-25",
+  "image": "/blog/og/we-stopped-optimizing-for-skills.png",
+  "categories": [
+   "Engineering",
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "ai-cant-save-bad-engineering",
+  "title": "AI Can't Save Bad Engineering",
+  "description": "AI tools can't compensate for poor engineering.",
+  "publish_date": "2026-05-25",
+  "image": "/blog/og/ai-cant-save-bad-engineering.png",
+  "categories": [
+   "AI",
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "ai-software-engineering-and-job",
+  "title": "AI, Software Engineering, and Job",
+  "description": "My honest take on how AI changed software engineering.",
+  "publish_date": "2026-05-24",
+  "image": "/blog/og/ai-software-engineering-and-job.png",
+  "categories": [
+   "AI",
+   "Career",
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "how-i-automated-everything-using-ai",
+  "title": "How I Automated Everything Using AI!",
+  "description": "My journey of automating daily tasks with AI & Hermes Agent setup.",
+  "publish_date": "2026-04-23",
+  "image": "/blog/og/how-i-automated-everything-using-ai.png",
+  "categories": [
+   "AI",
+   "Automation"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "setting-up-own-mongodb-honeypot-to-lure-attackers",
+  "title": "Setting up own mongodb honeypot to lure attackers",
+  "description": "Set up your own MongoDB honeypot on AWS using T-Pot.",
+  "publish_date": "2026-04-04",
+  "image": "/blog/og/setting-up-own-mongodb-honeypot-to-lure-attackers.png",
+  "categories": [
+   "Security"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "how-to-optimise-a-next-js-web-app",
+  "title": "How to optimise a Next.js web app",
+  "description": "Optimise your Next.js web app to make it lightning fast!",
+  "publish_date": "2026-01-31",
+  "image": "/blog/og/how-to-optimise-a-next-js-web-app.png",
+  "categories": [
+   "Next.js",
+   "Performance"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "what-is-taste-and-how-can-you-develop-it",
+  "title": "What is taste and how can you develop it?",
+  "description": "Understanding what is taste, resources and how to practice ",
+  "publish_date": "2025-12-07",
+  "image": "/blog/og/what-is-taste-and-how-can-you-develop-it.png",
+  "categories": [
+   "Design",
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "go-in-bits",
+  "title": "Go in bits",
+  "description": "Archive of all the links from my socials for go tuts.",
+  "publish_date": "2025-10-02",
+  "image": "/blog/og/go-in-bits.png",
+  "categories": [
+   "Go",
+   "Backend"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "my-winter-arc",
+  "title": "My Winter Arc",
+  "description": "This blog contains all the links of my content from twitter & Instagram.",
+  "publish_date": "2025-10-01",
+  "image": "/blog/og/my-winter-arc.png",
+  "categories": [
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "how-to-be-me-learn-build-and-crush-it",
+  "title": "How to be me - Learn, Build, and Crush it",
+  "description": "My journey of building, managing, and thinking differently.",
+  "publish_date": "2025-09-01",
+  "image": "/blog/og/how-to-be-me-learn-build-and-crush-it.png",
+  "categories": [
+   "Personal"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "better-frontend-part-1-learn-development-and-design-principles",
+  "title": "Better Frontend Part 1: Learn development and design principles",
+  "description": "A guide to better frontend development and design principles for beginners part 1",
+  "publish_date": "2025-02-25",
+  "image": "/blog/og/better-frontend-part-1-learn-development-and-design-principles.png",
+  "categories": [
+   "Frontend",
+   "Design"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "javascript-for-frontend-development-1",
+  "title": "JavaScript for Frontend Development: A Beginner's Guide",
+  "description": "A guide to JavaScript for frontend development for beginners part 1",
+  "publish_date": "2025-04-13",
+  "image": "/blog/og/javascript-for-frontend-development-1.png",
+  "categories": [
+   "JavaScript",
+   "Frontend"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "next-js-data-fetching-mistakes-and-security-vulnerabilities-1",
+  "title": "Next JS Data Fetching mistakes & Security vulnerabilities",
+  "description": "A guide to Next.js data fetching mistakes & security vulnerabilities",
+  "publish_date": "2025-07-05",
+  "image": "/blog/og/next-js-data-fetching-mistakes-and-security-vulnerabilities-1.png",
+  "categories": [
+   "Next.js",
+   "Security"
+  ],
+  "tags": []
+ },
+ {
+  "slug": "routing-in-next-js-app-router-a-complete-guide-2025",
+  "title": "Routing in Next.js (App Router) - A Complete Guide (2025)",
+  "description": "A guide to routing in Next.js (App Router) covering Catch-All Segments, Dynamic Routes, Nested Routes, and more.",
+  "publish_date": "2025-03-12",
+  "image": "/blog/og/routing-in-next-js-app-router-a-complete-guide-2025.png",
+  "categories": [
+   "Next.js"
+  ],
+  "tags": []
+ }
+]

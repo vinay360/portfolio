@@ -29,7 +29,7 @@ export function Hero() {
         </div>
       </div>
       <p className="text-sm text-muted-foreground max-w-xl">
-        SDE-1 at Shorthills AI. I build backends that hold up under load, and AI systems that stay grounded.
+        I build backends that hold up under load, and AI systems that stay grounded.
       </p>
       <Suspense fallback={<SpotifySkeleton />}>
         <Spotify />

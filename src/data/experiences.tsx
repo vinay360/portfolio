@@ -71,7 +71,7 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    company: "Crowwd Network India Private Limited",
+    company: "Crowwd",
     position: "Software Development Intern",
     location: "Remote",
     startDate: "January 2025",
@@ -99,7 +99,7 @@ export const experiences: Experience[] = [
   {
     company: "Tech Designworks Private Limited",
     position: "Backend Intern",
-    location: "Remote",
+    location: "Delhi",
     startDate: "July 2024",
     endDate: "November 2024",
     isCurrent: false,

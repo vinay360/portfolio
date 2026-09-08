@@ -5,7 +5,10 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "main": "vinext/server/fetch-handler",
+  "main": "dist/server/index.js",
+  "build": {
+    "command": "npx vinext build"
+  },
   "assets": {
     "directory": "dist/client",
     "not_found_handling": "none",
